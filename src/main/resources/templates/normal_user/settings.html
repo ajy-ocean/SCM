@@ -17,17 +17,19 @@
 					<div class="card">
 						<div class="card-body mt-3">
 							<h1>Password Change</h1>
-							<form action="">
+							<form th:action="@{/user/change-password}", method="POST">
 								<!-- Old Password -->
 								<div class="form-group" style="margin-right:720px;">
 									<input 
-											type="text" 
+											name="oldPassword"
+											type="password" 
 											class="form-control mt-4" 
 											placeholder="Enter old password" />
 								</div>
 								<!-- New Password -->
 								<div class="form-group" style="margin-right:720px;">
 									<input 
+											name="newPassword"
 											type="password" 
 											class="form-control mt-4" 
 											placeholder="Enter new password" />
