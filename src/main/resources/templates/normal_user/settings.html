@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+
+<!-- since we need to inherit the base page inside normal_user so that is way 
+	 we are going to put normal_user/base::layout...
+ -->
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="normal_user/base::layout(~{::section})">
+<head>
+<meta charset="UTF-8" />
+<title>Settings | Page</title>
+</head>
+<body>
+	<section>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="card">
+						<div class="card-body mt-3">
+							<h1>Password Change</h1>
+							<form action="">
+								<!-- Old Password -->
+								<div class="form-group" style="margin-right:720px;">
+									<input 
+											type="text" 
+											class="form-control mt-4" 
+											placeholder="Enter old password" />
+								</div>
+								<!-- New Password -->
+								<div class="form-group" style="margin-right:720px;">
+									<input 
+											type="password" 
+											class="form-control mt-4" 
+											placeholder="Enter new password" />
+								</div>
+								
+								<div class="container mt-4">
+									<button type="submit" style="margin-left:70px;" class="btn bg-dark text-white">Change Password</button>
+									<button type="reset" style="margin-left:5px; border:1px solid black;" class="btn bg-white text-dark">Reset</button>
+								</div>
+							</form> 
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script>
+			$(document).ready(()=>{
+				$(".item").removeClass("active-link");
+				$("#settings-link").addClass("active-link");				
+			});
+		</script>
+	</section>
+</body>
+</html>

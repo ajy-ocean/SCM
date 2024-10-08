@@ -247,5 +247,12 @@ public class UserController {
 		model.addAttribute("title", "Profile");
 		return "normal_user/profile";
 	}
+	
+	// Handler for settings option
+	@GetMapping("/settings")
+	public String openSettings(Model model) {
+		model.addAttribute("title", "Settings");
+		return "normal_user/settings";		
+	}
 }
 
