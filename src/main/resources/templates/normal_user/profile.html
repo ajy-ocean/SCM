@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+
+<!-- since we need to inherit the base page inside normal_user so that is way 
+	 we are going to put normal_user/base::layout...
+ -->
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="normal_user/base::layout(~{::section})">
+<head>
+<meta charset="UTF-8" />
+<title>Profile | Page</title>
+</head>
+<body>
+	<section>
+		<div class="container">
+			<div class="card" style="margin-right: 50px; margin-left: 50px;">
+				<div class="card-body">
+
+					<div class="container text-center">
+						<img class="my-profile-pic" src=""
+						th:src="@{'/img/'+${user.imageUrl}}" alt="profile pic"
+						style="width: 200px; height: 200px;" />
+					</div>
+
+					<h1 class="text-center mt-3 mb-4" th:text="${user.name}"></h1>
+					<table class="table">
+						<thead>
+							<tr>
+								<th scope="col">ID</th>
+								<th scope="col"><span th:text="'SCM2024' + ${user.id}"></span></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<th scope="row">Email</th>
+								<td><span th:text="${user.email}"></span></td>
+							</tr>
+							<tr>
+								<th scope="row">Role</th>
+								<td><span th:text="${user.role}"></span></td>
+							</tr>
+							<tr>
+								<th scope="row">Account Active</th>
+								<td><span th:text="${user.enabled}"></span></td>
+							</tr>
+							<tr>
+								<th scope="row">Bio</th>
+								<td><span th:text="${user.about}"></span></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+		<script>
+			$(document).ready(()=>{
+				$(".item").removeClass("active-link");
+				$("#profile-link").addClass("active-link");				
+			});
+		</script>
+	</section>
+</body>
+</html>

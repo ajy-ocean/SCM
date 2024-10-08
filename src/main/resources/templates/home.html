@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="base::layout(~{::section})">
+<head>
+<meta charset="UTF-8" />
+<title>Home | Page</title>
+</head>
+<body>
+	<section
+		class="banner d-flex justify-content-center align-items-center">
+		<div class="text-center">
+			<h1 class="font-weight-bold">Smart Contact Manager</h1>
+			<p>“Keep grinding, boy, your life can change in one year and even
+				when it’s dark out, the sun is shining somewhere”
+			</p>
+			<a class="btn bg-primary btn-lg text-dark" th:href="@{/signup}">Let's Begin </a>
+		</div>
+	</section>
+</body>
+</html>

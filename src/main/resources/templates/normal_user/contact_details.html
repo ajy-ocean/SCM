@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+
+<!-- since we need to inherit the base page inside normal_user so that is way 
+	 we are going to put normal_user/base::layout...
+ -->
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="normal_user/base::layout(~{::section})">
+<head>
+<meta charset="UTF-8" />
+<title>Contact Details | Page</title>
+</head>
+<body>
+	<section>
+		<div class="card" style="margin-right: 50px; margin-left: 50px;"
+			th:if="${contact}">
+			<div class="card-body">
+				<div class="container text-center">
+					<img class="my-profile-pic" src=""
+						th:src="@{'/img/'+${contact.image}}" alt="profile pic"
+						style="width: 200px; height: 200px;" />
+
+					<h3 class="mt-4">
+						<span th:text="${contact.name}"></span> (<span
+							th:text="${contact.nickName}"></span>)
+					</h3>
+					<table class="table">
+						<thead>
+							<tr>
+								<th scope="col">ID</th>
+								<th scope="col"><span
+									th:text="'SCM2024' + ${contact.contact_id}"></span></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<th scope="row">Email</th>
+								<td><span th:text="${contact.email}"></span></td>
+							</tr>
+							<tr>
+								<th scope="row">Phone</th>
+								<td><span th:text="${contact.phone}"></span></td>
+							</tr>
+							<tr>
+								<th scope="row">Work</th>
+								<td><span th:text="${contact.work}"></span></td>
+							</tr>
+						</tbody>
+					</table>
+
+					<div class="description">
+						Bio:
+						<th:block th:utext="${contact.description}"></th:block>
+					</div>
+
+					<div class="container mt-4">
+						<button th:onclick="|deleteContact(${contact.contact_id})|"
+							class="btn btn-danger btn-sm">Delete</button>
+
+						<form th:action="@{'/user/update-contact/' + ${contact.contact_id}}"
+							class="mt-3" method="post">
+							<button type="submit" class="btn bg-dark text-white btn-sm">Update</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="text-center p-3 bg-danger text-white" th:unless=${contact}
+			style="margin-right: 50px; margin-left: 50px; font-size: 40px; margin-top: 100px;">
+			<i class="fa-solid fa-circle-exclamation"></i> Unauthorized Access,
+			Don't Have Required Privileges
+		</div>
+	</section>
+</body>
+</html>
