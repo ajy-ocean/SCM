@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="base::layout(~{::section})">
+<head>
+<meta charset="UTF-8" />
+<title>Forgot Password | Page</title>
+</head>
+<body>
+	<section>
+		<div class="signin-container" style="">
+			<div class="col-md-4">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<!-- Email Form -->
+						<h3 class="panel-title text-center">
+							<strong>Verify Email</strong>
+						</h3>
+						<form th:action="@{/send-otp}" method="POST">
+							<div class="form-group">
+								<input name="email" type="email" class="form-control mt-5" placeholder="Enter email here"
+									required />
+							</div>
+							<div class="container mt-5 text-center">
+								<button class="btn bg-white text-dark">Send OTP</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>
