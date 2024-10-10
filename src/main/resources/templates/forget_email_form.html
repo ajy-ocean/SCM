@@ -7,18 +7,32 @@
 </head>
 <body>
 	<section>
-		<div class="signin-container" style="">
+		<div class="signin-container">
 			<div class="col-md-4">
 				<div class="panel panel-default">
 					<div class="panel-heading">
+
+						<!-- Message -->
+						<div th:if="${session.message}" class="container">
+							<div class="alert alert-danger text-center"
+								style="margin-right: 340px; margin-left: 408px;" role="alert">
+								<span th:text="${session.message.content}"></span>
+							</div>
+
+							<!-- Because of this getting error, no longer supported #session.removeAttribute -->
+							<!-- <th:block th:text="${#session.removeAttribute('message')}"></th:block> -->
+
+							<th:block th:text="${@sessionHelper.removeMessageFromSession()}"></th:block>
+						</div>
+
 						<!-- Email Form -->
 						<h3 class="panel-title text-center">
 							<strong>Verify Email</strong>
 						</h3>
 						<form th:action="@{/send-otp}" method="POST">
 							<div class="form-group">
-								<input name="email" type="email" class="form-control mt-5" placeholder="Enter email here"
-									required />
+								<input name="email" type="email" class="form-control mt-5"
+									placeholder="Enter email here" required />
 							</div>
 							<div class="container mt-5 text-center">
 								<button class="btn bg-white text-dark">Send OTP</button>
