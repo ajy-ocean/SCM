@@ -3,6 +3,7 @@ package com.scm.controller;
 import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,6 +25,9 @@ public class ForgotPasswordController {
 	
 	@Autowired
 	private UserRepository userRepository;
+	
+	@Autowired
+	private BCryptPasswordEncoder bCryptPasswordEncoder;
 
 	// Handler for opening form for email in case of password forgot
 	@RequestMapping("/forgot")
@@ -90,11 +94,17 @@ public class ForgotPasswordController {
 			return "verify_otp";
 		}
 	}
+	
+	// Handler For Change Password
+	@PostMapping("/change-password")
+	public String changePassword(@RequestParam("newpassword") String newpassword, HttpSession session) {
+		String email = (String)session.getAttribute("email");
+		User user = this.userRepository.getUserByUserName(email);
+		user.setPassword(this.bCryptPasswordEncoder.encode(newpassword));
+		this.userRepository.save(user);
+		return "redirect:/signin?change-password changed successfully";
+	}
 }
-
-
-
-
 
 
 

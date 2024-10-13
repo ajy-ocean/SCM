@@ -18,8 +18,11 @@
 					<div th:if="${param.error}" class="alert alert-danger mt-4">
 						Invalid email or password
 					</div>
-					<div th:if="${param.logout}" class="alert alert-success mt-4">
+					<div th:if="${param.change}" class="alert alert-success mt-4">
 						You have been logged out
+					</div>
+					<div th:if="${param.logout}" class="alert alert-success mt-4">
+						<p th:text="${param.change}"></p>
 					</div>
 					<div class="panel-body mt-3">
 						<form class="form" th:action="@{/processlogin}" method="post">

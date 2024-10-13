@@ -19,7 +19,8 @@ public class EmailService {
 	public boolean sendEmailUsingRediffPro(String subject, String message, String to) {
 		boolean flag = false;
 
-		String from = "sender_rediffmail"; // Replace with your RediffPro email address
+		//String from = "sender_rediffmail"; // Replace with your RediffPro email address
+		String from = "ajay@redvinca.com"; // Replace with your RediffPro email address
 		String host = "smtp.rediffmailpro.com"; // RediffPro SMTP server
 		Properties properties = System.getProperties();
 		properties.put("mail.smtp.host", host);
@@ -31,7 +32,8 @@ public class EmailService {
 		Session session = Session.getInstance(properties, new Authenticator() {
 			@Override
 			protected PasswordAuthentication getPasswordAuthentication() {
-				 return new PasswordAuthentication("sender_rediffmail", "your_password");
+				 //return new PasswordAuthentication("sender_rediffmail", "your_password");
+				 return new PasswordAuthentication("ajay@redvinca.com", "tsd@ajay");
 			}
 		});
 		session.setDebug(true);
