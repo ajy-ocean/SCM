@@ -7,17 +7,22 @@
 </head>
 <body>
 	<section>
-		<div class="signin-container" style="">
+		<div class="signin-container">
 			<div class="col-md-4">
 				<div class="panel panel-default">
 					<div class="panel-heading">
-						<div class="alert alert-warning" role="alert">
-  							We have send OTP to your email
+						<div class="alert alert-warning" role="alert">We have send
+							OTP to your email</div>
+						<div th:if="${session.message}" class="container">
+							<div class="alert alert-danger text-center" role="alert">
+								<span th:text="${session.message}"></span>
+							</div>
+							<th:block th:text="${@sessionHelper.removeMessageFromSession()}"></th:block>
 						</div>
-						<form th:action="@{/send-otp}" method="POST">
+						<form th:action="@{/verify-otp}" method="POST">
 							<div class="form-group">
-								<input name="otp" type="text" class="form-control mt-5" placeholder="Enter OTP here"
-									required />
+								<input name="otp" type="text" class="form-control mt-5"
+									placeholder="Enter OTP here" required />
 							</div>
 							<div class="container mt-5 text-center">
 								<button class="btn bg-white text-dark">Verify OTP</button>

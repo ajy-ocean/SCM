@@ -15,8 +15,8 @@
 						<!-- Message -->
 						<div th:if="${session.message}" class="container">
 							<div class="alert alert-danger text-center"
-								style="margin-right: 340px; margin-left: 408px;" role="alert">
-								<span th:text="${session.message.content}"></span>
+								 role="alert">
+								<span th:text="${session.message}"></span>
 							</div>
 
 							<!-- Because of this getting error, no longer supported #session.removeAttribute -->

@@ -41,7 +41,8 @@ public class EmailService {
 			msg.setFrom(from);
 			msg.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
 			msg.setSubject(subject);
-			msg.setText(message);
+			//msg.setText(message);
+			msg.setContent(message, "text/html");
 			Transport.send(msg);
 			System.out.println("Email sent via RediffPro..............");
 			flag = true;
