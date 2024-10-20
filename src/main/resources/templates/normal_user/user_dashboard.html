@@ -14,25 +14,82 @@
 		<div class="card" style="margin-right: 50px; margin-left: 50px;">
 			<div class="card-body">
 				<div class="container text-center">
-					<img class="my-profile-pic" src=""
-						th:src="@{'/img/dashboard.png'}" alt="profile pic"
-						style="width: 200px; height: 200px;" />
+					<img class="my-profile-pic" src="" th:src="@{'/img/dashboard.png'}"
+						alt="profile pic" style="width: 200px; height: 200px;" />
 				</div>
-				<h1 class="text-center mt-3 text-secondary">
-					Add Your Favorite Contacts
-				</h1>
-				
-				<div class="container text-center">				
-				 <a th:href="@{/user/add-contact}" class="btn bg-dark text-white mt-4 btn-block text-uppercase">Add New Contacts</a>
+				<h1 class="text-center mt-3 text-secondary">Add Your Favorite
+					Contacts</h1>
+
+				<div class="container text-center">
+					<a th:href="@{/user/add-contact}"
+						class="btn bg-dark text-white mt-4 btn-block text-uppercase">Add
+						New Contacts</a>
 				</div>
-			</div> 
+
+				<!-- Donation Section -->
+				<div class="container text-center mt-5">
+					<h2>Support Us with a Donation</h2>
+					<input type="number" id="donationAmount" placeholder="Enter amount"
+						style="width: 200px; margin: 10px;" />
+					<button id="donateButton" class="btn btn-primary">Donate
+						Now</button>
+				</div>
+			</div>
 		</div>
-		<script>
+		<!-- <script>
 			$(document).ready(()=>{
 				$(".item").removeClass("active-link");
 				$("#home-link").addClass("active-link");				
 			});
-		</script>
+		</script> -->
+
+
+		<!-- Razorpay script -->
+		<script>
+                    const options = {
+                        key: "rzp_test_HJG5Rtuy8Xh2NB", // Replace with your Razorpay test or live key
+                        amount: "10000", // Default amount in paise (INR 100)
+                        name: "Your Organization Name",
+                        description: "Donation",
+                        image: "https://cdn.razorpay.com/logos/7K3b6d18wHwKzL_medium.png",
+                        handler: function(response) {
+                            alert("Donation successful! Payment ID: " + response.razorpay_payment_id);
+                        },
+                        prefill: {
+                            name: "John Doe",
+                            contact: "9999999999",
+                            email: "john.doe@example.com"
+                        },
+                        theme: {
+                            color: "#528FF0"
+                        },
+                        notes: {
+                            address: "Your Organization Address"
+                        }
+                    };
+
+                    const openPayModal = () => {
+                        const donationAmount = document.getElementById("donationAmount").value * 100; // Convert to paise
+                        options.amount = donationAmount; // Update amount in options
+                        
+                        var rzp1 = new window.Razorpay(options);
+                        rzp1.open();
+                    };
+
+                    // Load Razorpay script when the button is clicked
+                    document.getElementById("donateButton").addEventListener("click", function() {
+                        var script = document.createElement("script");
+                        script.src = "https://checkout.razorpay.com/v1/checkout.js";
+                        script.async = true;
+                        script.onload = openPayModal; // Call the openPayModal function after script loads
+                        document.body.appendChild(script);
+                    });
+
+                    $(document).ready(() => {
+                        $(".item").removeClass("active-link");
+                        $("#home-link").addClass("active-link");				
+                    });
+                </script>
 	</section>
 </body>
 </html>
